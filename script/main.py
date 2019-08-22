@@ -9,15 +9,28 @@ in the labor program's smartsheet account.
 """
 
 import os
-
+import time
+from datetime import date
 from smartsheet import Smartsheet
 
+
+def get_information():
+    date_today = date.today()
+    bnum = input("Enter B#: ")
+    fname = "Ahad"
+    lname = "Zai"
+    reason = "Direct Deposit"
+    other = "Other Reason"
+    department = "Labor Program Office"
+    return date_today,bnum,fname,lname,reason,other,department
 
 def main():
     sheet = Smartsheet()
     sheet.setup()
-    sheet.add_entry('date','bnum','fname','lname','resason','other','department')
-
+    while True:
+        date_today,bnum,fname,lname,reason,other,department = get_information()
+        sheet.add_entry(date_today,bnum,fname,lname,reason,other,department)
+        time.sleep(1000)
 
 if __name__=="__main__":
     main()
