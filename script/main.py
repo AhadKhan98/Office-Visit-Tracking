@@ -13,7 +13,6 @@ import time
 from datetime import date
 from smartsheet import Smartsheet
 
-
 def get_information():
     date_today = date.today()
     bnum = input("Enter B#: ")
@@ -30,7 +29,7 @@ def main():
     while True:
         date_today,bnum,fname,lname,reason,other,department = get_information()
         sheet.add_entry(date_today,bnum,fname,lname,reason,other,department)
-        time.sleep(1000)
+        time.sleep(0.5)
 
 if __name__=="__main__":
     main()

@@ -2,7 +2,7 @@ import os
 from simple_smartsheet import Smartsheet
 from simple_smartsheet.models import Sheet, Column, Row, Cell, ColumnType
 
-api_token = "Enter API Here"
+api_token = "API TOKEN HERE"
 smartsheet = Smartsheet(api_token)
 
 class Smartsheet:
