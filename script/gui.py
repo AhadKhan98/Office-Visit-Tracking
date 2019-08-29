@@ -64,16 +64,20 @@ class GUI:
         clockin_checkbox = Checkbutton(window,text="Clock In Issues")
         clockin_checkbox.grid(row=8,column=1,sticky=W)
 
-        other_checkbox = Checkbutton(window,text="Other")
+        other_var = IntVar()
+        def show_hide_other():
+            if other_var.get() == 1:
+                other_label.grid(row=9,column=0,sticky=W)
+                other_entry.grid(row=9,column=1,sticky=W)
+            else:
+                other_label.grid_remove()
+                other_entry.grid_remove()
+        other_checkbox = Checkbutton(window,text="Other",variable=other_var,command=show_hide_other)
         other_checkbox.grid(row=8,column=2,sticky=W)
 
 
-        other_label = Label(window,text="If Other:")
-        other_label.grid(row=9,column=0,sticky=W)
-        other_label.grid_remove()
+        other_label = Label(window,text="Other Reason:")
         other_entry = Entry(window)
-        other_entry.grid(row=9,column=1,sticky=W)
-        other_entry.grid_remove()
 
         submit_button = Button(window,text="Submit",width=10)
         submit_button.grid(row=10,column=2)
