@@ -2,6 +2,7 @@ from tkinter import *
 
 class GUI:
 
+    entered_info = []
 
     def setup(self):
         window = Tk()
@@ -52,16 +53,20 @@ class GUI:
         direct_deposit_checkbox = Checkbutton(window,text="Direct Deposit",variable=direct_deposit_var)
         direct_deposit_checkbox.grid(row=7,column=0,sticky=W)
 
-        paycheck_checkbox = Checkbutton(window,text="Paycheck")
+        paycheck_var = IntVar()
+        paycheck_checkbox = Checkbutton(window,text="Paycheck",variable=paycheck_var)
         paycheck_checkbox.grid(row=7,column=1,sticky=W)
 
-        paystubs_checkbox = Checkbutton(window,text="Pay Stubs")
+        paystubs_var = IntVar()
+        paystubs_checkbox = Checkbutton(window,text="Pay Stubs",variable=paystubs_var)
         paystubs_checkbox.grid(row=7,column=2,sticky=W)
 
-        paperwork_checkbox = Checkbutton(window,text="Paperwork")
+        paperwork_var = IntVar()
+        paperwork_checkbox = Checkbutton(window,text="Paperwork",variable=paperwork_var)
         paperwork_checkbox.grid(row=8,column=0,sticky=W)
 
-        clockin_checkbox = Checkbutton(window,text="Clock In Issues")
+        clockin_var = IntVar()
+        clockin_checkbox = Checkbutton(window,text="Clock In Issues",variable=clockin_var)
         clockin_checkbox.grid(row=8,column=1,sticky=W)
 
         other_var = IntVar()
@@ -79,14 +84,14 @@ class GUI:
         other_label = Label(window,text="Other Reason:")
         other_entry = Entry(window)
 
-        submit_button = Button(window,text="Submit",width=10)
+        #Submit Button
+        def submit():
+            self.entered_info.clear()
+            self.entered_info += [bnum_entry.get(),first_name_entry.get(),last_name_entry.get(),direct_deposit_var.get(),paycheck_var.get(),paystubs_var.get(),paperwork_var.get(),clockin_var.get(),other_var.get(),other_entry.get()]
+            window.destroy()
+        submit_button = Button(window,text="Submit",width=10,command=submit)
         submit_button.grid(row=10,column=2)
 
 
         window.mainloop()
-
-
-
-
-gui = GUI()
-gui.setup()
+        return self.entered_info

@@ -27,15 +27,14 @@ class Smartsheet:
             Column(title='First Name',type=ColumnType.TEXT_NUMBER),
             Column(title='Last Name',type=ColumnType.TEXT_NUMBER),
             Column(title='Reason for Visit',type=ColumnType.TEXT_NUMBER),
-            Column(title='Other',type=ColumnType.TEXT_NUMBER),
-            Column(title='Labor Department',type=ColumnType.TEXT_NUMBER),
+            Column(title='Other',type=ColumnType.TEXT_NUMBER)
             ],
             )
             result = smartsheet.sheets.create(sheet_skeleton)
 
         return smartsheet.sheets.get('Office Visit Tracking Program')
 
-    def add_entry(self,entry_date,entry_bnum,entry_fname,entry_lname,entry_reason,entry_other,entry_department):
+    def add_entry(self,entry_date,entry_bnum,entry_fname,entry_lname,entry_reason,entry_other):
         sheet = self.setup()
         sheet_name = sheet.name
         sheet_id = sheet.id
@@ -47,6 +46,5 @@ class Smartsheet:
         Cell(column_id=sheet.get_column("Last Name").id,value=entry_lname),
         Cell(column_id=sheet.get_column("Reason for Visit").id,value=entry_reason),
         Cell(column_id=sheet.get_column("Other").id,value=entry_other),
-        Cell(column_id=sheet.get_column("Labor Department").id,value=entry_department)
         ])
         smartsheet.sheets.add_row(sheet_id,to_add)
