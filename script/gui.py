@@ -10,12 +10,13 @@ class GUI:
 
         # Title Label
         title_label = Label(window,text="Office Visit Tracking")
-        title_label.grid(row=1,column=0)
-
+        title_label.grid(row=0,column=1,sticky=W)
+        blank_label = Label(window,text="")
+        blank_label.grid(row=1,sticky=W)
 
         # B# Label
         bnum_label = Label(window,text="B#:")
-        bnum_label.grid(row=2,column=0)
+        bnum_label.grid(row=2,sticky=W)
 
 
         # B# Entry
@@ -24,7 +25,7 @@ class GUI:
 
         # First Name Label
         first_name_label = Label(window,text="First Name:")
-        first_name_label.grid(row=3,column=0)
+        first_name_label.grid(row=3,sticky=W)
 
 
         # First Name Entry
@@ -33,7 +34,7 @@ class GUI:
 
         # Last Name Label
         last_name_label = Label(window,text="Last Name:")
-        last_name_label.grid(row=4,column=0)
+        last_name_label.grid(row=4,sticky=W)
 
 
         # Last Name Entry
@@ -42,32 +43,39 @@ class GUI:
 
         # Reason Label
         reason_label = Label(window,text="")
-        reason_label.grid(row=5,column=0)
+        reason_label.grid(row=5,sticky=W)
         reason_label = Label(window,text="Reason for Visit: ")
-        reason_label.grid(row=6,column=0)
+        reason_label.grid(row=6,column=0,sticky=W)
 
         # Reason checkboxes
         direct_deposit_var = IntVar()
         direct_deposit_checkbox = Checkbutton(window,text="Direct Deposit",variable=direct_deposit_var)
-        direct_deposit_checkbox.grid(row=7,column=0)
+        direct_deposit_checkbox.grid(row=7,column=0,sticky=W)
 
         paycheck_checkbox = Checkbutton(window,text="Paycheck")
-        paycheck_checkbox.grid(row=7,column=1)
+        paycheck_checkbox.grid(row=7,column=1,sticky=W)
 
         paystubs_checkbox = Checkbutton(window,text="Pay Stubs")
-        paystubs_checkbox.grid(row=7,column=2)
+        paystubs_checkbox.grid(row=7,column=2,sticky=W)
 
         paperwork_checkbox = Checkbutton(window,text="Paperwork")
-        paperwork_checkbox.grid(row=8,column=0)
+        paperwork_checkbox.grid(row=8,column=0,sticky=W)
 
         clockin_checkbox = Checkbutton(window,text="Clock In Issues")
-        clockin_checkbox.grid(row=8,column=1)
+        clockin_checkbox.grid(row=8,column=1,sticky=W)
 
-        paperwork_checkbox = Checkbutton(window,text="Other")
-        paperwork_checkbox.grid(row=8,column=2)
+        other_checkbox = Checkbutton(window,text="Other")
+        other_checkbox.grid(row=8,column=2,sticky=W)
 
-        #Submit button
-        submit_button = Button(window,text="Submit")
+
+        other_label = Label(window,text="If Other:")
+        other_label.grid(row=9,column=0,sticky=W)
+        other_label.grid_remove()
+        other_entry = Entry(window)
+        other_entry.grid(row=9,column=1,sticky=W)
+        other_entry.grid_remove()
+
+        submit_button = Button(window,text="Submit",width=10)
         submit_button.grid(row=10,column=2)
 
 
